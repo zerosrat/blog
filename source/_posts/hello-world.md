@@ -2,7 +2,7 @@ title: Hello Hexo
 date: 2015-10-30 0:02:11
 description: 开启Hexo之旅
 categories: Front End
-tag: hexo
+tag: Blog
 ---
 ## 前言
 
@@ -45,8 +45,3 @@ $ hexo deploy
 了解更多: [部署](http://hexo.io/docs/deployment.html)
 
 或是 **手动拷贝** 生成的静态文件（~/public）
-
-
-
-
-

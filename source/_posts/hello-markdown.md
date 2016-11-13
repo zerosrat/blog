@@ -1,7 +1,7 @@
 title: MarkDown 语法手册
 date: 2015-11-18 16:06:21
 description: 如何优雅地使用MarkDown
-categories: Front End
+categories: Blog
 tag: MarkDown
 ---
 ## 前言
@@ -12,7 +12,7 @@ tag: MarkDown
 
 ## 常用语法
 
-### 斜体和粗体 
+### 斜体和粗体
 
 使用 \* 和 \** 分别表示斜体和粗体。
 
@@ -46,7 +46,7 @@ tag: MarkDown
 
 这是去往 [本人github](https://github.com/zerosrat) 的链接。
 
-### 无序列表 
+### 无序列表
 
 使用 *，+，- 表示无序列表。
 
@@ -56,7 +56,7 @@ tag: MarkDown
 - 无序列表项 二
 - 无序列表项 三
 
-### 有序列表 
+### 有序列表
 
 使用数字和点表示有序列表。
 
@@ -66,7 +66,7 @@ tag: MarkDown
 2. 有序列表项 二
 3. 有序列表项 三
 
-### 文字引用 
+### 文字引用
 
 使用 > 表示文字引用。
 
@@ -74,7 +74,7 @@ tag: MarkDown
 
 > 野火烧不尽，春风吹又生。
 
-### 行内代码块 
+### 行内代码块
 
 使用 \`代码` 表示行内代码块。
 
