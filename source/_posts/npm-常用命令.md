@@ -2,7 +2,6 @@ title: npm 常用命令
 date: 2016-07-15 15:26:03
 tags: npm
 categories: Front End
-description: npm 入门及其常用命令
 ---
 
 ## 参考
@@ -16,6 +15,7 @@ description: npm 入门及其常用命令
 ### 什么是 npm
 
 npm 全称是Node Package Manager，可以类比 ruby 的 gem 或是 java 的 maven
+<!-- more -->
 
 ### 环境搭建
 

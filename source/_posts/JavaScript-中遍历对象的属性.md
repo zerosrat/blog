@@ -2,7 +2,6 @@ title: JavaScript 中遍历对象的属性
 date: 2016-07-13 22:06:26
 tags: [JavaScript, loop]
 categories: Front End
-description: JS 中遍历对象属性的正确姿势。到底是用 for-in 、 Object.keys() 还是 Object.getOwnPropertyNames() 呢
 ---
 
 ## 参考
@@ -15,15 +14,15 @@ description: JS 中遍历对象属性的正确姿势。到底是用 for-in 、 O
 ## 概述
 
 遍历 JavaScript 对象中的属性没有其他语言那么简单，因为两个因素会影响属性的遍历：属性的 `[[Enumerable]]` 特性为 `true` 才能被 `for-in` 访问；由于原型链，访问属性时会沿着整个原型链从下到上查找属性。所以说遍历属性时，要考虑这两个因素。
-
+<!-- more -->
 ***
 
 ## 开始遍历
 
 先定义两个类吧：Person 和 Student，后者继承前者。然后再声明并初始化一个 Student 的实例 p1。其中自身属性有 grade（可枚举） 和 tel（不可枚举），从原型链继承属性 type.
-可枚举意思是属性的 `[[Enumerable]]` 值为 `true`，自身的属性意思是不是从 **原型链** 继承的属性
+可枚举意思是属性的 `[[Enumerable]]` 值为 `true`，自身的属性意思是 *不是* 从 **原型链** 继承的属性
 
-```
+``` js
 function Person(name) {
 	this.name = name;
 }
@@ -49,13 +48,13 @@ Object.defineProperty(p1, "tel", {
 
 使用 `Object.keys()` 或是 `for in` + `hasOwnProperty()`
 
-```
+``` js
 for (let prop of Object.keys(p1)){
-    console.log(prop);
+	console.log(prop);
 }
 ```
 
-```
+``` js
 for (let prop in p1) {
 	if (p1.hasOwnProperty(prop)) {
 		console.log(prop);
@@ -64,13 +63,13 @@ for (let prop in p1) {
 ```
 
 结果是：name 和 grade 属性
-注：后者对浏览器的支持更佳
+注：后者对浏览器的支持更佳，因为 `Object.keys()` 是 ES5 的新方法
 
 ### 遍历所有（可枚举的&不可枚举的）、自身的属性
 
 使用 `Object.getOwnPropertyNames()`
 
-```
+``` js
 for(let prop of Object.getOwnPropertyNames(p1)) {
 	console.log(prop);
 }
@@ -82,7 +81,7 @@ for(let prop of Object.getOwnPropertyNames(p1)) {
 
 使用 `for-in`
 
-```
+``` js
 var getEnumPropertyNames = (obj) => {
 	var props = [];
 	for (let prop in obj) {
@@ -99,7 +98,7 @@ for (let prop of getEnumPropertyNames(p1)) {
 
 ### 遍历所有的、自身+继承的属性
 
-```
+``` js
 var getAllPropertyNames = (obj) => {
     var props = [];
     do {

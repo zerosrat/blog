@@ -2,7 +2,6 @@ title: JavaScript 数组遍历
 date: 2016-07-24 10:02:07
 tags: [JavaScript, loop]
 categories: Front End
-description: JavaScript 中遍历数组的正确姿势
 ---
 
 ## 参考
@@ -26,7 +25,7 @@ description: JavaScript 中遍历数组的正确姿势
 - `for-of`（ES6+）
 
 - 使用迭代器（ES6+）
-
+<!-- more -->
 先声明并初始化一个数组对象吧：`var a = ["a", "b", "c"];`
 
 ### 使用 `for` 循环
