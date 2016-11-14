@@ -185,11 +185,12 @@ sidebar:
 
 
 # Blogrolls
-#links_title: Links
-#links_layout: block
+links_title: 这里是友链
+links_layout: block
 #links_layout: inline
-#links:
-  #Title: http://example.com/
+links:
+  徐刘根的专栏: http://blog.csdn.net/xlgen157387
+  JumorZhu's Labs: http://codingjoker.github.io/
 
 
 # ---------------------------------------------------------------
