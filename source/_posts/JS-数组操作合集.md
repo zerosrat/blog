@@ -1,7 +1,7 @@
 title: JavaScript 数组操作合集
 date: 2016-09-21 23:48:07
 tags: [JavaScript, Array]
-categories: Font End
+categories: Front End
 #description: JavaScript 中操作数组的各种方法，方法不包含 ES6+. 本博客可作为字典用
 ---
 
