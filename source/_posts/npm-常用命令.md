@@ -1,3 +1,4 @@
+---
 title: npm 常用命令
 date: 2016-07-15 15:26:03
 tags: npm
@@ -19,7 +20,7 @@ npm 全称是Node Package Manager，可以类比 ruby 的 gem 或是 java 的 ma
 
 ### 环境搭建
 
-到 Nodejs 官网下载并安装 Nodejs 即可。之后命令号输入 `$ npm -v` 验证。
+到 Nodejs 官网下载并安装 Nodejs 即可。之后命令行输入 `$ npm -v` 验证。
 
 ## 常用命令
 
@@ -32,6 +33,13 @@ npm 全称是Node Package Manager，可以类比 ruby 的 gem 或是 java 的 ma
 `npm install -g npm-package` 全局安装 npm 包
 `npm install --save npm-package` 局部安装 npm 包，并在 package.json 中更新 dependencies 的配置
 `npm install --save-dev npm-package` 局部安装 npm 包，并在 package.json 中更新 devDependencies 的配置
+
+- 更新 npm 包
+`npm outdate` 查看项目中非最新版本的 npm 包
+`npm update` 更新项目中 npm 包
+`npm outdate -g --depth=0` 查看全局非最新版本的 npm 包
+`npm update npm-package` 更新全局中某 npm 包
+
 
 - 卸载 npm 包
 `npm uninstall npm-package` 局部卸载 npm 包
