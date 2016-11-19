@@ -13,7 +13,9 @@ categories: Front End
 ## 前言
 
 最近饱受 npm 下载速度慢之苦，自然有了提速的需求。网上查阅资料后，总结出了三个常用方案：使用淘宝源、`cnpm` 以及最近大热 `yarn`
+<!-- more -->
 
+---
 ## 使用淘宝源
 
 ### 一次性使用
@@ -48,6 +50,7 @@ $ npm install express --registry https://registry.npm.taobao.org/
   $ nrm test
   ```
 
+---
 ## cnpm
 [cnpm](https://github.com/cnpm/cnpm): npm client for China mirror of npm https://npm.taobao.org
 ``` bash
@@ -57,12 +60,27 @@ $ npm install cnpm -g --registry=https://registry.npm.taobao.org
 之后可以通过 cnpm 命令来安装包了，如
 `$ cnpm i webpack -g`
 
+---
 ## yarn
-挖坑
+yarn 是 facebook 上个月才发布的一个全新的包管理工具，出现的缘由是为了解决 npm 遗留下的一些痛点。yarn 有一个特性就是fast，这里我们来尝尝鲜，来看看 yarn 的速度如何
 
+### 安装
+[根据自己的操作系统进行安装](https://yarnpkg.com/en/docs/install)
+安装完成后测试：`$ yarn test`
+
+### 常用命令
+- `$ yarn add`: adds a package to use in your current package.
+- `$ yarn init`: initializes the development of a package.
+- `$ yarn install`: installs all the dependencies defined in a package.json - file.
+- `$ yarn publish`: publishes a package to a package manager.
+- `$ yarn remove`: removes an unused package from your current package.
+
+详情参考[官方文档](https://yarnpkg.com/en/docs/cli/)
+
+---
 ## 总结
 
-推荐使用方案一，也是我目前使用的方案，简单快捷
+推荐使用方案一 (**npm + taobao registry**)，也是我目前使用的方案，简单快捷。方案二  (**cnpm**) 的弊端在下面的延伸阅读中有提到。方案三 (**yarn**) 是一个比较新的技术，大家的评价还是褒贬不一的，可以再等等看看大家的反应如何。
 
 ## 延伸阅读
 
