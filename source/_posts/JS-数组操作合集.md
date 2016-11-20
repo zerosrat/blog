@@ -16,8 +16,8 @@ categories: Front End
 ## Overview
 ![](http://7xoxnz.com1.z0.glb.clouddn.com/js-array-overview.png)
 <!-- more -->
----
 
+---
 ## JavaScript 数组的特性
 
 - 无类型
@@ -49,8 +49,8 @@ Array.isArray([])  //true
 - ES3：
 ``` js
 var isArray = Function.isArray || function(o) {
-  return typeof === 'object' &&
-  Object.prototype.toStrong.call(o) === '[Object Array]';
+    return typeof === 'object' &&
+    Object.prototype.toStrong.call(o) === '[Object Array]';
 }
 ```
 
@@ -130,7 +130,7 @@ arr.splice(1, 1, 'c');  // return ['a']; arr is [1, 'c', 'b', 4]
   要提前终止的话，要使用 `try-catch`
   ``` js
   [].forEach((el, i, arr) => {
-    // do something
+      // do something
   })
   ```
 
@@ -161,12 +161,12 @@ arr.splice(1, 1, 'c');  // return ['a']; arr is [1, 'c', 'b', 4]
   可用于数组求和以及数组扁平化
   ``` js
   var sum = [0, 1, 2, 3].reduce(function(a, b) {
-    return a + b;
+      return a + b;
   }, 0);
   // sum is 6
 
   var flattened = [[0, 1], [2, 3], [4, 5]].reduce(function(a, b) {
-    return a.concat(b);
+      return a.concat(b);
   }, []);
   // flattened is [0, 1, 2, 3, 4, 5]
   ```

@@ -1,3 +1,4 @@
+---
 title: JavaScript 中遍历对象的属性
 date: 2016-07-13 22:06:26
 tags: [JavaScript, loop]
@@ -24,14 +25,14 @@ categories: Front End
 
 ``` js
 function Person(name) {
-	this.name = name;
+    this.name = name;
 }
 
 Person.prototype.type = "people";
 
 function Student(name, grade) {
-	Person.call(this, name);
-	this.grade = grade;
+    Person.call(this, name);
+    this.grade = grade;
 }
 
 Student.prototype = new Person();
@@ -39,8 +40,8 @@ Student.prototype.constructor = Student;
 
 var p1 = new Student("Zero", "Junior");
 Object.defineProperty(p1, "tel", {
-	value: 123456,
-	enumerable: false
+    value: 123456,
+    enumerable: false
 });
 ```
 
@@ -50,15 +51,15 @@ Object.defineProperty(p1, "tel", {
 
 ``` js
 for (let prop of Object.keys(p1)){
-	console.log(prop);
+    console.log(prop);
 }
 ```
 
 ``` js
 for (let prop in p1) {
-	if (p1.hasOwnProperty(prop)) {
-		console.log(prop);
-	}
+    if (p1.hasOwnProperty(prop)) {
+        console.log(prop);
+    }
 }
 ```
 
@@ -71,7 +72,7 @@ for (let prop in p1) {
 
 ``` js
 for(let prop of Object.getOwnPropertyNames(p1)) {
-	console.log(prop);
+    console.log(prop);
 }
 ```
 
@@ -83,14 +84,14 @@ for(let prop of Object.getOwnPropertyNames(p1)) {
 
 ``` js
 var getEnumPropertyNames = (obj) => {
-	var props = [];
-	for (let prop in obj) {
-		props.push(prop);
-	}
-	return props;
+    var props = [];
+    for (let prop in obj) {
+        props.push(prop);
+    }
+    return props;
 };
 for (let prop of getEnumPropertyNames(p1)) {
-	console.log(prop);
+    console.log(prop);
 }
 ```
 
@@ -107,7 +108,7 @@ var getAllPropertyNames = (obj) => {
     return props;
 };
 for (let prop of getAllPropertyNames(p1)) {
-	console.log(prop);
+    console.log(prop);
 }
 ```
 

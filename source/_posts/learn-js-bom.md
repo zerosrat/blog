@@ -1,3 +1,4 @@
+---
 title: JS 学习笔记（BOM篇）
 date: 2016-05-22 18:35:54
 tags: JavaScript
@@ -20,18 +21,18 @@ BOM 提供了很多对象来访问浏览器功能，这些功能与网页内容�
 ### 框架
 
 - 若页面包含框架，则每个框架都拥有自己的 `window` 对象，并且保存在 `frames` 集合中
-```
+``` html
 <html>
-	<head>
-		<title>Frameset Example</title>
-	</head>
-	<frameset rows="160,*">
-		<frame src="frame1.htm" name="topFrame">
-		<frameset cols="50%,50%">
-			<frame src="frame2.htm" name="leftFrame">
-			<frame src="frame3.htm" name="rightFrame">
-		</frameset>
-	</frameset>
+    <head>
+        <title>Frameset Example</title>
+    </head>
+    <frameset rows="160,*">
+        <frame src="frame1.htm" name="topFrame">
+        <frameset cols="50%,50%">
+            <frame src="frame2.htm" name="leftFrame">
+            <frame src="frame3.htm" name="rightFrame">
+        </frameset>
+    </frameset>
 </html>
 ```
 可以使用 `window.frames[0]` 、 `window.frames["topFrame"]` or `frames[0]` 来引用最上层框架
@@ -49,7 +50,7 @@ BOM 提供了很多对象来访问浏览器功能，这些功能与网页内容�
 - `window.open(URL,name,features,replace)` 方法，[方法用法详情](http://www.w3school.com.cn/jsref/met_win_open.asp)
 
 - `close()` 方法，一般用于通过 `window.open()` 打开的窗口
-```
+``` js
 var win = window.open("http://zerosrat.com");
 win.close();
 ```
@@ -59,41 +60,41 @@ win.close();
 - JavaScript 是单线程语言，但允许通过设置超时值和间歇值来调度代码在特定时间执行
 
 - 间歇调用
-```
-var num = 0;
-var max = 10;
-var intervalId = null;
+    ``` js
+    var num = 0;
+    var max = 10;
+    var intervalId = null;
 
-function incrementNum() {
-	num++;
-	if(num == max) {
-		clearInterval(intervalId);
-		alert("done");
-	}
-}
+    function incrementNum() {
+        num++;
+        if(num == max) {
+            clearInterval(intervalId);
+            alert("done");
+        }
+    }
 
-intervalId = setInterval(incrementNum, 1000);
-```
+    intervalId = setInterval(incrementNum, 1000);
+    ```
 
 - 超时调用
-```
-var num = 0;
-var max = 10;
+    ``` js
+    var num = 0;
+    var max = 10;
 
-function incrementNum() {
-	num++;
-	if(num < max) {
-		setTimeout(incrementNum, 1000);
-	} else {
-		alert("done");
-	}
-}
+    function incrementNum() {
+        num++;
+        if(num < max) {
+            setTimeout(incrementNum, 1000);
+        } else {
+            alert("done");
+        }
+    }
 
-setTimeout(incrementNum, 1000);
+    setTimeout(incrementNum, 1000);
 
-```
+    ```
 
-- 上面两段代码实现了相同的功能。事实上，在开发中，很少使用前者（间歇调用），因为后一个间歇调用可能在前一个调用结束之前启动
+- 上面两段代码实现了相同的功能。推荐使用 `setTimeout()` ，因为在开发中，很少使用前者（间歇调用），因为后一个间歇调用可能在前一个调用结束之前启动
 
 ### 系统对话框
 
@@ -102,9 +103,9 @@ setTimeout(incrementNum, 1000);
 - `confirm()`
 ```
 if(confirm(Are you sure?)) {
-	alert("I'm glad u r sure");
+    alert("I'm glad u r sure");
 } else {
-	alert("I'm sad u r not sure");
+    alert("I'm sad u r not sure");
 }
 ```
 
@@ -112,7 +113,7 @@ if(confirm(Are you sure?)) {
 ```
 var result = prompt("What is your id", "default");
 if(result ! == null){
-	alert("Welcome," + result);
+    alert("Welcome," + result);
 }
 ```
 
@@ -151,7 +152,7 @@ if(result ! == null){
 ## history 对象
 
 - `history.go()`
-```
+``` js
 history.go(-1); //后退一页
 history.go(2); //前进两页
 history.go("zerosrat.com"); //跳转至最近的zerosrat.com页面
@@ -170,10 +171,10 @@ history.go("zerosrat.com"); //跳转至最近的zerosrat.com页面
 - 两个重要概念：先检测达成目的的最常用的特性；必须测试实际要用到的特性
 
 - 测试对象某特性是否存在的例子
-```
+``` js
 function isHostMethod(object, property) {
-	var t = typeof object[property];
-	return t == 'function' || (!!(t == 'object' && object[property])) || t == 'unknown';
+    var t = typeof object[property];
+    return t == 'function' || (!!(t == 'object' && object[property])) || t == 'unknown';
 }
 var result = isHostMethod(document, "getElementById");
 ```
@@ -185,16 +186,16 @@ var result = isHostMethod(document, "getElementById");
 - 怪癖检测是想要知道浏览器存在什么缺陷也就是“bug”
 
 - Safari3 以前版本会枚举被隐藏的属性，可以用下面的函数来检测该“怪癖”
-```
+``` js
 var hasEnumShadowsQuirk = function () {
-	var o = { toString : function(){} };
-	var count = 0;
-	for(var prop in o){
-		if (prop == "toString"){
-			count ++;
-		}
-	}
-	return (count > 1);
+    var o = { toString : function(){} };
+    var count = 0;
+    for(var prop in o){
+        if (prop == "toString"){
+            count ++;
+        }
+    }
+    return (count > 1);
 }();
 ```
 如果浏览器存在这个bug，那么使用for-in循环枚举带有自定义的toString() 方法的对象，就会返回两个toString的实例。

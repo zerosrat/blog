@@ -1,7 +1,7 @@
 ---
 title: npm 下载提速解决方案
 date: 2016-11-19 20:42:49
-tags: npm
+tags: [npm, yarn]
 categories: Front End
 ---
 

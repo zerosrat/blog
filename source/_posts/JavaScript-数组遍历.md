@@ -1,3 +1,4 @@
+---
 title: JavaScript 数组遍历
 date: 2016-07-24 10:02:07
 tags: [JavaScript, loop]
@@ -32,7 +33,7 @@ categories: Front End
 
 ``` js
 for (let i = a.length; i--; ) {
-	console.log(a[i]);
+    console.log(a[i]);
 }
 ```
 
@@ -66,7 +67,7 @@ for (let val of a) {
 
 ``` js
 for (let entry, itr = a[Symbol.iterator](); !(entry = itr.next()).done; ) {
-	console.log(entry.value);
+    console.log(entry.value);
 }
 ```
 

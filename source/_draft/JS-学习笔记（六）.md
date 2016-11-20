@@ -1,3 +1,4 @@
+---
 title: JS 学习笔记（DOM篇 - 中）
 date: 2016-06-01 21:21:02
 tags: JavaScript
@@ -37,16 +38,16 @@ description: DOM2 和 DOM3 的学习笔记以及事件处理程序和事件对�
 #### HTML 事件处理程序
 
 - 例子1
-```
+``` html
 <input type="button" value="click" onclick="alert('hi');" />
 ```
 
 - 例子2
-```
+``` html
 <script type="text/javascript">
-	function sayHi () {
-		alert("hi");
-	}
+    function sayHi () {
+        alert("hi");
+    }
 </script>
 <input type="button" value="click" onclick="sayHi()" />
 ```
@@ -58,11 +59,11 @@ description: DOM2 和 DOM3 的学习笔记以及事件处理程序和事件对�
 - 将函数赋值给事件处理程序属性
 
 - 例子
-```
+``` js
 var btn = document.getElementById("mybtn");
 //add event
 btn.onclick = function () {
-	alert(this.id); //"mybtn"
+    alert(this.id); //"mybtn"
 };
 //remove event
 btn.onclick = null;
@@ -73,20 +74,20 @@ btn.onclick = null;
 - 使用方法 `addEventListener()` 和 `removeEventListener()`
 
 - 例子1
-```
+``` js
 var btn = document.getElementById("mybtn");
 //第一个参数是要处理的事件名；第二个是事件处理函数；第三个若为 true 表示在捕获阶段调用函数，否则在冒泡阶段调用
 btn.addEventListener("click", function () {
-	alert(this.id);
+    alert(this.id);
 }, false);
 ```
 
 - 例子1的事件处理函数是匿名的，这样就无法移除了。除非使用函数表达式，如下
-```
+``` js
 var btn = document.getElementById("mybtn");
 var handler = function () {
-	alert(this.id);
-} 
+    alert(this.id);
+}
 //add event
 btn.addEventListener("click", handler, false);
 //remove event
@@ -102,10 +103,10 @@ btn.removeEventListener("click", handler, false);
 - 使用 `attachEvent()` 和 `detachEvent()`
 
 - 例子1
-```
+``` js
 var btn = document.getElementById("mybtn");
 btn.attachEvent("onclick", function () {
-	alert(this === window); //true
+    alert(this === window); //true
 })
 ```
 
@@ -114,11 +115,11 @@ btn.attachEvent("onclick", function () {
 - 可以在一个节点上添加多个事件处理程序，触发时按添加顺序的 **反序** 调用
 
 - 例子2
-```
+``` js
 var btn = document.getElementById("mybtn");
 var handler = function () {
-	alert("hi");
-} 
+    alert("hi");
+}
 //add event
 btn.attachEvent("onclick", handler);
 //remove event
@@ -128,37 +129,35 @@ btn.detachEvent("onclick", handler);
 #### 跨浏览器的事件处理程序
 
 - 使用能力检测，例子如下
-```
-var EventUtil = {
+    ``` js
+    var EventUtil = {
+        addHandler : function (element, type, handler) {
+            if (element.addEventListener) {
+                element.addEventListener(type, handler, false);
+            } else if (element.attachEvent) {
+                element.attachEvent("on" + type, handler)
+            } else {
+                element["on" + type] = handler;
+            }
+        },
+        removeHandler : function (element, type, handler) {
+            if (element.removeEventListener) {
+                element.removeEventListener(type, handler, false);
+            } else if (element.detachEvent) {
+                element.detachEvent("on" + type, hander);
+            } else {
+                element["on" + type] = null;
+            }
+        }
+    };
 
-	addHandler : function (element, type, handler) {
-		if (element.addEventListener) {
-			element.addEventListener(type, handler, false);
-		} else if (element.attachEvent) {
-			element.attachEvent("on" + type, handler)
-		} else {
-			element["on" + type] = handler;
-		}
-	},
-
-	removeHandler : function (element, type, handler) {
-		if (element.removeEventListener) {
-			element.removeEventListener(type, handler, false);
-		} else if (element.detachEvent) {
-			element.detachEvent("on" + type, hander);
-		} else {
-			element["on" + type] = null;
-		}
-	}
-};
-
-var btn = docment.getElementById("mybtn");
-var handler = function () {
-	//to-do
-};
-EventUtil.addHander(btn, "click", handler);
-EventUtil.removeHander(btn, "click", handler);
-```
+    var btn = docment.getElementById("mybtn");
+    var handler = function () {
+        //to-do
+    };
+    EventUtil.addHander(btn, "click", handler);
+    EventUtil.removeHander(btn, "click", handler);
+    ```
 
 ### 事件对象
 
@@ -167,13 +166,13 @@ EventUtil.removeHander(btn, "click", handler);
 #### DOM 中的事件对象
 
 - 兼容 DOM 的浏览器会将一个 `event` 对象传入到事件处理程序中
-```
+``` js
 var btn = document.getElementById("mybtn");
 btn.onclick = function (event) {
-	alert(event.type); //click
+    alert(event.type); //click
 };
 btn.addEventListener("click", function (event) {
-	alert(event.type); //click
+    alert(event.type); //click
 }, false);
 ```
 
@@ -194,19 +193,19 @@ btn.addEventListener("click", function (event) {
 #### IE 中的事件对象
 
 - 使用 DOM0 级添加事件处理程序时，`event` 对象作为 `window` 对象的一个属性存在
-```
+``` js
 var btn = document.getElementById("mybtn");
 btn.onclick = function () {
-	var event = window.event;
-	alert(event.type); //click
+    var event = window.event;
+    alert(event.type); //click
 };
 ```
 
 - 如果是用 `attachEvent()`，就会有一个 `event` 对象传入到事件处理程序中
-```
+``` js
 var btn = document.getElementById("mybtn");
 btn.attachEvent("onclick", function (event) {
-	alert(event.type); //click
+    alert(event.type); //click
 });
 ```
 
@@ -215,59 +214,58 @@ btn.attachEvent("onclick", function (event) {
 #### 跨浏览器的事件对象
 
 - 增强自定义的 `EventUtil` 对象
-```
-var EventUtil = {
+    ``` js
+    var EventUtil = {
 
-	addHandler : function (element, type, handler) {
-		if (element.addEventListener) {
-			element.addEventListener(type, handler, false);
-		} else if (element.attachEvent) {
-			element.attachEvent("on" + type, handler)
-		} else {
-			element["on" + type] = handler;
-		}
-	},
+        addHandler : function (element, type, handler) {
+            if (element.addEventListener) {
+                element.addEventListener(type, handler, false);
+            } else if (element.attachEvent) {
+                element.attachEvent("on" + type, handler)
+            } else {
+                element["on" + type] = handler;
+            }
+        },
 
-	removeHandler : function (element, type, handler) {
-		if (element.removeEventListener) {
-			element.removeEventListener(type, handler, false);
-		} else if (element.detachEvent) {
-			element.detachEvent("on" + type, hander);
-		} else {
-			element["on" + type] = null;
-		}
-	},
+        removeHandler : function (element, type, handler) {
+            if (element.removeEventListener) {
+                element.removeEventListener(type, handler, false);
+            } else if (element.detachEvent) {
+                element.detachEvent("on" + type, hander);
+            } else {
+                element["on" + type] = null;
+            }
+        },
 
-	getEvent : function (event) {
-		return event ? event : window.event;
-	},
+        getEvent : function (event) {
+            return event ? event : window.event;
+        },
 
-	getTarget : function (event) {
-		return event.target || event.srcElement;
-	},
+        getTarget : function (event) {
+            return event.target || event.srcElement;
+        },
 
-	preventDefault : function (event) {
-		if (event.preventDefault) {
-			event.preventDefault();
-		} else {
-			event.returnValue = false;
-		}
-	},
+        preventDefault : function (event) {
+            if (event.preventDefault) {
+                event.preventDefault();
+            } else {
+                event.returnValue = false;
+            }
+        },
 
-	stopPropagation : function (event) {
-		if (event.stopPropagation) {
-			event.stopPropagation();
-		} else {
-			event.cancelBubble = true;
-		}
-	}
-};
+        stopPropagation : function (event) {
+            if (event.stopPropagation) {
+                event.stopPropagation();
+            } else {
+                event.cancelBubble = true;
+            }
+        }
+    };
 
-var btn = docment.getElementById("mybtn");
-var handler = function (event) {
-	event = EventUtil.getEvent(event);
-	var target = EventUtil.getTarget(event);
-};
-EventUtil.addHander(btn, "click", handler);
-```
-
+    var btn = docment.getElementById("mybtn");
+    var handler = function (event) {
+        event = EventUtil.getEvent(event);
+        var target = EventUtil.getTarget(event);
+    };
+    EventUtil.addHander(btn, "click", handler);
+    ```

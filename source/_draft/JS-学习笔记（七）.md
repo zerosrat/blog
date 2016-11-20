@@ -1,3 +1,4 @@
+---
 title: JS 学习笔记（DOM篇 - 下）
 date: 2016-06-04 10:10:10
 tags: JavaScript
@@ -20,14 +21,14 @@ DOM3 级事件将事件进行了分类：UI事件、焦点事件、鼠标事件�
 - `var isSupported = document.implementation.hasFeature("UIEvent", "3.0");` 检测浏览器是否支持 DOM3 级的 UI 事件
 
 - `load` 是 **最常用** 的事件之一；`<img>` 指定了 `src` 就会开始下载，而 `<script>` 设置了 `src` 并且被添加到文档才会开始下载，`<link>` 同 `<script>` 类似
-```
+``` js
 EventUtil.addHandler(window, "load", function () {
-	var script = document.createElement("script");
-	EventUtil.addHandler(script, "load", function (event) {
-		alert("loaded");
-	})
-	script.src = "script.js";
-	document.getElementByTagName("head")[0].appendChild(script);
+    var script = document.createElement("script");
+    EventUtil.addHandler(script, "load", function (event) {
+        alert("loaded");
+    })
+    script.src = "script.js";
+    document.getElementByTagName("head")[0].appendChild(script);
 })
 ```
 
@@ -64,11 +65,11 @@ EventUtil.addHandler(window, "load", function () {
 ### 文本事件
 
 - 只有一个文本事件 `textInput`
-```
+``` js
 var textbox = document.getElementById("myText");
 EventUtil.addHandler(textbox, "textInput", function (event) {
-	event = EventUtil.getEvent(event);
-	alert(event.data); //在文本框按下一个键时就会触发
+    event = EventUtil.getEvent(event);
+    alert(event.data); //在文本框按下一个键时就会触发
 })
 ```
 
@@ -99,19 +100,19 @@ EventUtil.addHandler(textbox, "textInput", function (event) {
 - 利用事件冒泡，只指定一个事件处理程序，来管理某类型的所有事件
 
 - 例子
-```
+``` js
 var list = document.getElementById("myList");
 EventUtil.addHandler(list, "click", function (event) {
-	event = EventUtil.getEvent(event);
-	var target = EventUtil.getTarget(event);
-	switch (target.id) {
-		case "li1":
-			//todo
-			break;
-		case "li2":
-			//todo
-			break;
-	}
+    event = EventUtil.getEvent(event);
+    var target = EventUtil.getTarget(event);
+    switch (target.id) {
+        case "li1":
+            //todo
+            break;
+        case "li2":
+            //todo
+            break;
+    }
 })
 ```
 

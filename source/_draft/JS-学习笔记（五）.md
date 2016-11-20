@@ -1,3 +1,4 @@
+---
 title: JS 学习笔记（DOM篇 - 上）
 date: 2016-05-26 19:09:42
 tags: JavaScript
@@ -106,10 +107,10 @@ document.body.appendChild(element);
 var fragment = document.createDocumentFragment();
 var ul = document.getElementById("list");
 for(var i = 0; i < 3; i++){
-	var li = document.createElement("li");
-	var text = document.createTextNode("li-"+i);
-	li.appendChild(text);
-	fragment.appendChild(li);
+    var li = document.createElement("li");
+    var text = document.createTextNode("li-"+i);
+    li.appendChild(text);
+    fragment.appendChild(li);
 }
 ul.appendChild(fragment);
 ```
@@ -139,9 +140,9 @@ var script = document.createElement("script");
 script.type = "text/javascript";
 var code = "function sayHi(){alert('hi');}";
 try {
-	script.appendChild(document.createTextNode(code));
+    script.appendChild(document.createTextNode(code));
 } catch(ex) {
-	script.text = code;
+    script.text = code;
 }
 document.body.appendChild(script);
 ```
@@ -151,7 +152,7 @@ document.body.appendChild(script);
 - 能把 CSS 样式包含到 HTML 页面的元素有两个。其中，`<link>` 元素用于包含来自外部的文件，`<style>` 元素用于指定嵌入的样式
 
 - 动态指定外部文件
-```
+``` js
 var link = document.createElement("link");
 link.rel = "stylesheet";
 link.type = "text/css";
@@ -161,14 +162,14 @@ head.appendChild(link);
 ```
 
 - 动态指定嵌入的样式
-```
+``` js
 var style = document.createElement("style");
 style.type = "text/css";
 var code = "body{background-color:red;}";
 try {
-	style.appendChild(document.createTextNode(code));
+    style.appendChild(document.createTextNode(code));
 } catch(ex) {
-	style.styleSheet.cssText = code;
+    style.styleSheet.cssText = code;
 }
 var head = document.getElementsByTagName("head")[0];
 head.appendChild(style);
@@ -177,11 +178,11 @@ head.appendChild(style);
 - 操作 NodeList 时
 
 - 一个例子
-```
+``` js
 var divs = document.getElementsByTag("div");
 for(var i = 0, len = divs.length; i < len; i++){
-	var div = document.createElement("div");
-	document.body.appendChild(div);
+    var div = document.createElement("div");
+    document.body.appendChild(div);
 }
 ```
 以上预先存储了 divs 的长度，避免了无限循环的问题，因为 `NodeList` 是动态的
@@ -221,12 +222,12 @@ for(var i = 0, len = divs.length; i < len; i++){
 - `document.charset` 表示文档中实际使用的字符集
 
 - HTML5 规定给元素加自定义属性时，名字要加前缀 `data-`，添加后可以通过元素的 `dataset` 属性来访问
-```
-<div id="myDiv" data-name="haha"></div>
+    ``` js
+    <div id="myDiv" data-name="haha"></div>
 
-var div = document.getElementById("myDiv");
-var name = div.dataset.name;
-```
+    var div = document.getElementById("myDiv");
+    var name = div.dataset.name;
+    ```
 
 - `innerHTML` 操作元素的子节点。读模式下返回元素的所有子节点的 HTML 标记，写模式下会根据新制定的值创建 DOM 树来替代原来的所有子节点
 

@@ -16,11 +16,11 @@ description: 与表单相关的操作
 - 将 `button` or `input` 的 `type` 设置为 `"submit"`，或是将 `<input>` 的 `type` 设置为 `"image"`，点击按钮或图像按钮，就会提交表单
 
 - 点击按钮时，先触发 onsubmit 事件，再向浏览器发送请求。可以通过阻止 submit 事件的默认行为来取消提交
-```
+``` js
 var form = document.forms[0];
 EventUtil.addHandler(form, "submit", function (event) {
-	event = EventUtil.getEvent(event);
-	EventUtil.preventDefault(event);
+    event = EventUtil.getEvent(event);
+    EventUtil.preventDefault(event);
 });
 ```
 
@@ -43,11 +43,11 @@ EventUtil.addHandler(form, "submit", function (event) {
 - 表单子元素的常用共有属性有 `disable` 、 `name`  and `value`， 属性是可以动态修改的
 
 - 第一次点击后禁用提交按钮的例子
-```
+``` js
 EventUtil.addHandler(form, "submit", function (event) {
-	event = EventUtil.getEvent(event);
-	var btn = form.elements["submit-btn"];
-	btn.disable = true; //禁用按钮
+    event = EventUtil.getEvent(event);
+    var btn = form.elements["submit-btn"];
+    btn.disable = true; //禁用按钮
 });
 ```
 
@@ -70,22 +70,22 @@ EventUtil.addHandler(form, "submit", function (event) {
 - 选择了文本框的文本时会触发 select 事件
 
 - 可以通过 HTML5 提供的 `selectionStart` and `selectionEnd` 来获得选择的文本
-```
+``` js
 function getSelectedTxt (textbox) {
-	return textbox.value.substring(textbox.selectionStart, textbox.selectionEnd);
+    return textbox.value.substring(textbox.selectionStart, textbox.selectionEnd);
 }
 ```
 
 ### 过滤输入
 
 - 例子，只输入数字
-```
+``` js
 EventHandler.addHandler(textbox, "keypress", function (event) {
-	event = EventUtil.getEvent(event);
-	var charCode = EventUtil.getCharCode(event);
-	if(!/\d/.test(String.fromCharCode(charCode)) && charCode > 9) {
-		EventUtil.preventDefault(event);
-	}
+    event = EventUtil.getEvent(event);
+    var charCode = EventUtil.getCharCode(event);
+    if(!/\d/.test(String.fromCharCode(charCode)) && charCode > 9) {
+        EventUtil.preventDefault(event);
+    }
 })
 
 ```
@@ -100,7 +100,7 @@ EventHandler.addHandler(textbox, "keypress", function (event) {
 - 选择框通过 `<select>` and `<option>` 元素创建
 
 - 推荐使用 `text` or `value` 属性来访问或修改选项文本或值的值
-```
+``` js
 var selectbox = document.forms[0].elements["selectbox"];
 var text = selectbox.options[0].text;
 var value = selectbox.options[0].value;
@@ -115,7 +115,7 @@ var value = selectbox.options[0].value;
 ### 添加选项
 
 - 法一：使用 DOM
-```
+``` js
 var newOption = document.createElement("option");
 newOption.appendChild(document.createTextNode("option text"));
 newOption.setAttribute("value", "option value");
@@ -123,13 +123,13 @@ selectbox.appendChild(newOption);
 ```
 
 - 法二：使用 Option 构造函数
-```
+``` js
 var newOption = new Option("option text", "option value");
 selectbox.appendChild(newOption);
 ```
 
 - 法三：使用选择框的 `add()`（最佳）
-```
+``` js
 var newOption = new Option("option text", "option value");
 selectbox.add(newOption, undefined);
 ```
@@ -137,17 +137,17 @@ selectbox.add(newOption, undefined);
 ### 移除选项
 
 - 法一：使用DOM
-```
+``` js
 selectbox.removeChild(selectbox.options[0]);
 ```
 
 - 法二
-```
+``` js
 selectbox.remove(0);
 ```
 
 - 法三
-```
+``` js
 selectbox.options[0] = null;
 ```
 
