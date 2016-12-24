@@ -44,8 +44,8 @@ npm 全称是Node Package Manager，可以类比 ruby 的 gem 或是 java 的 ma
 - 卸载 npm 包
 `npm uninstall npm-package` 局部卸载 npm 包
 `npm uninstall -g npm-package` 全局卸载 npm 包
-`npm install --save npm-package` 局部卸载 npm 包，并在 package.json 中更新 dependencies 的配置
-`npm install --save-dev npm-package` 局部卸载 npm 包，并在 package.json 中更新 devDependencies 的配置
+`npm uninstall --save npm-package` 局部卸载 npm 包，并在 package.json 中更新 dependencies 的配置
+`npm uninstall --save-dev npm-package` 局部卸载 npm 包，并在 package.json 中更新 devDependencies 的配置
 
 - 列出 npm 包
 `npm ls` 列出当前目录环境下的 npm 包

@@ -15,7 +15,7 @@ categories: Git
 ### 基础类
 
 - 在工作目录初始化
-`$ git init` 
+`$ git init`
 
 - 克隆远端仓库，第二个参数可选
 `$ git clone [path] [localName]`
@@ -42,6 +42,9 @@ $ git commit -m 'initial commit'
 $ git add forgotten_file
 $ git commit --amend
 ```
+
+- 丢弃所有未暂存的修改
+`$git checkout .`
 
 - 查看当前的远程库信息
 `$ git remote (-v)`
@@ -74,7 +77,7 @@ $ git commit --amend
 `$ git merge (--no-ff) [source-branch-name]`
 
 - 远程抓取数据并合并
-`$ git pull` 
+`$ git pull`
 或
 ```
 $ git fetch [remote-name]
