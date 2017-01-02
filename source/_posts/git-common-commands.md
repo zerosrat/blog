@@ -10,9 +10,7 @@ categories: Git
 <!-- more -->
 ***
 
-## 常用命令
-
-### 基础类
+## 基础类
 
 - 在工作目录初始化
 `$ git init`
@@ -62,7 +60,7 @@ $ git commit --amend
 - 远程仓库删除
 `$ git remote rm [remote-name]`
 
-### 分支类
+## 分支类
 
 - 创建分支
 `$ git branch [branch-name]`
@@ -79,13 +77,19 @@ $ git commit --amend
 - 远程抓取数据并合并
 `$ git pull`
 或
-```
+``` bash
 $ git fetch [remote-name]
 $ git merge (--no-ff) [remote-name]
 ```
 
-- 删除分支
+- 删除本地分支
 `$ git branch -d [branch-name]`
+
+- 强制删除本地分支
+`$ git branch -D [branch-name]`
+
+- 删除远程分支
+`$ git push [remote]:[branch]`
 
 - 查看分支信息
 `$ git branch (-v)`
@@ -95,9 +99,6 @@ $ git merge (--no-ff) [remote-name]
 - 跟踪远程分支
 `$ git checkout -b [branch] [remote]/[branch]`
 `$ git checkout --track [remote]/[branch]`
-
-- 删除远程分支
-`$ git push [remote]:[branch]`
 
 - 衍合
 ```

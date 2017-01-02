@@ -40,7 +40,6 @@ npm 全称是Node Package Manager，可以类比 ruby 的 gem 或是 java 的 ma
 `npm outdate -g --depth=0` 查看全局非最新版本的 npm 包
 `npm update npm-package` 更新全局中某 npm 包
 
-
 - 卸载 npm 包
 `npm uninstall npm-package` 局部卸载 npm 包
 `npm uninstall -g npm-package` 全局卸载 npm 包
