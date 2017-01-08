@@ -79,9 +79,9 @@ for (let entry, itr = a[Symbol.iterator](); !(entry = itr.next()).done; ) {
 
 - `for-in` 不推荐，两个原因：不能保证遍历的顺序是预期的；遍历可能会带出原型链上的属性
 
-- `forEach()` 非常好用的遍历方式，ES5+，如果担心运行时资源消耗的问题，可以看看[forEach and runtime cost](http://blog.niftysnippets.org/2012/02/foreach-and-runtime-cost.html)。缺陷是不能使用 `break`
+- `forEach()` 非常好用的遍历方式，ES5+，如果担心运行时资源消耗的问题，可以看看 [forEach and runtime cost](http://blog.niftysnippets.org/2012/02/foreach-and-runtime-cost.html)。缺陷是不能使用 `break`，但可以用 `try-catch` 来 hack
 
-- `map()` ES5+，适用于“链式”场景，如 `a.map(i => {return i + i;}).sort();`，很有b格
+- `map()` ES5+，适用于“链式”场景，如 `a.map(i => i + i).sort();`
 
 - `for-of` ES6+，适用于全部元素的遍历，缺陷是不知道 index
 

@@ -14,7 +14,7 @@ categories: Front End
 
 ## 概述
 
-遍历 JavaScript 对象中的属性没有其他语言那么简单，因为两个因素会影响属性的遍历：属性的 `[[Enumerable]]` 特性为 `true` 才能被 `for-in` 访问；由于原型链，访问属性时会沿着整个原型链从下到上查找属性。所以说遍历属性时，要考虑这两个因素。
+遍历 JavaScript 对象中的属性没有其他语言那么简单，因为两个因素会影响属性的遍历：对象属性的属性描述符 (property descriptor) 的 `[[Enumerable]]` 特性为 `true` （可枚举）才能被 `for-in` 访问；如果在对象本身没有找到属性，接下来会在原型链上查找，访问属性时会沿着整个原型链从下到上查找属性。所以说遍历属性时，要考虑这两个因素。
 <!-- more -->
 ***
 
@@ -24,11 +24,12 @@ categories: Front End
 可枚举意思是属性的 `[[Enumerable]]` 值为 `true`，自身的属性意思是 *不是* 从 **原型链** 继承的属性
 
 ``` js
+// ES3 ES5
 function Person(name) {
     this.name = name;
 }
 
-Person.prototype.type = "people";
+Person.prototype.type = 'people';
 
 function Student(name, grade) {
     Person.call(this, name);
@@ -38,8 +39,32 @@ function Student(name, grade) {
 Student.prototype = new Person();
 Student.prototype.constructor = Student;
 
-var p1 = new Student("Zero", "Junior");
-Object.defineProperty(p1, "tel", {
+var p1 = new Student('Zero', 'Junior');
+Object.defineProperty(p1, 'tel', {
+    value: 123456,
+    enumerable: false
+});
+```
+
+``` js
+// ES6+
+class Person {
+    constructor(name) {
+        this.name = name;
+    }
+}
+
+Person.prototype.type = 'people';
+
+class Student extends Person {
+    constructor(name, grade) {
+        super(name);
+        this.grade = grade;
+    }
+}
+
+var p1 = new Student('zero', 'Junior');
+Object.defineProperty(p1, 'tel', {
     value: 123456,
     enumerable: false
 });
@@ -47,16 +72,20 @@ Object.defineProperty(p1, "tel", {
 
 ### 遍历可枚举的、自身的属性
 
-使用 `Object.keys()` 或是 `for in` + `hasOwnProperty()`
+使用 `Object.keys()` 或是 `for..in` + `hasOwnProperty()`
 
 ``` js
+// Object.keys()返回可枚举、自身的属性
+// 再用for..of对返回的数组进行遍历
 for (let prop of Object.keys(p1)){
     console.log(prop);
 }
 ```
 
 ``` js
+// 得到可枚举、自身+继承的属性
 for (let prop in p1) {
+    // 过滤继承属性
     if (p1.hasOwnProperty(prop)) {
         console.log(prop);
     }
@@ -64,14 +93,13 @@ for (let prop in p1) {
 ```
 
 结果是：name 和 grade 属性
-注：后者对浏览器的支持更佳，因为 `Object.keys()` 是 ES5 的新方法
+注： `Object.keys()` 的使用环境是 ES5+
 
 ### 遍历所有（可枚举的&不可枚举的）、自身的属性
 
-使用 `Object.getOwnPropertyNames()`
-
 ``` js
-for(let prop of Object.getOwnPropertyNames(p1)) {
+// 使用 `Object.getOwnPropertyNames()`
+for (let prop of Object.getOwnPropertyNames(p1)) {
     console.log(prop);
 }
 ```
@@ -80,22 +108,14 @@ for(let prop of Object.getOwnPropertyNames(p1)) {
 
 ### 遍历可枚举的、自身+继承的属性
 
-使用 `for-in`
-
 ``` js
-var getEnumPropertyNames = (obj) => {
-    var props = [];
-    for (let prop in obj) {
-        props.push(prop);
-    }
-    return props;
-};
-for (let prop of getEnumPropertyNames(p1)) {
+// 使用 `for..in`
+for (let prop in p1) {
     console.log(prop);
 }
 ```
 
-结果是：name 、 grade 、 constructor 和 type 属性
+结果是：name 、 grade 和 type 属性
 
 ### 遍历所有的、自身+继承的属性
 
@@ -107,6 +127,7 @@ var getAllPropertyNames = (obj) => {
     } while (obj = Object.getPrototypeOf(obj));
     return props;
 };
+
 for (let prop of getAllPropertyNames(p1)) {
     console.log(prop);
 }
