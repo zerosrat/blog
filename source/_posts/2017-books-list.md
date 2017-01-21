@@ -11,14 +11,15 @@ description:
 <!-- more -->
 
 ## 已读
-[]
+### 码字类
+- 《你不知道的JavaScript（上卷）》
 
 ## 在读
 ### 小说类
 - 《围城》 钱钟书
 
 ### 码字类
-- 《You Don't Know JS》
+- 《你不知道的JavaScript（中卷）》
 
 ### 论说类
 #### 元认知类
