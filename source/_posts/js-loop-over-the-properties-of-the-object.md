@@ -36,8 +36,17 @@ function Student(name, grade) {
     this.grade = grade;
 }
 
-Student.prototype = new Person();
-Student.prototype.constructor = Student;
+if (Object.setPrototypeOf) {
+    Object.setPrototypeOf(Student.prototype, Person.prototype);
+} else {
+    Student.prototype = Object.create(Person.prototype);
+    Object.defineProperty(Student.prototype, 'constructor', {
+        enumerable: false,
+        writable: true,
+        configurable: true,
+        value: Student
+    });
+}
 
 var p1 = new Student('Zero', 'Junior');
 Object.defineProperty(p1, 'tel', {

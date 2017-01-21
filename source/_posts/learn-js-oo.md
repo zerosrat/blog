@@ -147,7 +147,19 @@ Super.prototype.getSuperValue = function() {
 function Sub() {
     this.property = false;
 }
-Sub.prototype = new Super(); // extend
+// extend
+if (Object.setPrototypeOf) {
+    Object.setPrototypeOf(Sub.prototype, Super.prototype);
+} else {
+    Sub.prototype = Object.create(Super.prototype);
+    Object.defineProperty(Sub.prototype, 'constructor', {
+        enumerable: false,
+        writable: true,
+        configurable: true,
+        value: Sub
+    });
+}
+
 Sub.prototype.getSubValue = function() {
     return this.property;
 }
@@ -185,8 +197,19 @@ var instance = new Sub();
         Super.call(this, "Neo"); //extend the properties
         this.age = age;
     }
-    Sub.prototype = new Super(); //extend the methods
-    Sub.prototype.constructor = Sub;
+    // extend
+    if (Object.setPrototypeOf) {
+        Object.setPrototypeOf(Sub.prototype, Super.prototype);
+    } else {
+        Sub.prototype = Object.create(Super.prototype);
+        Object.defineProperty(Sub.prototype, 'constructor', {
+            enumerable: false,
+            writable: true,
+            configurable: true,
+            value: Sub
+        });
+    }
+    
     Sub.prototype.sayAge = function() {
         alert(this.age);
     }
