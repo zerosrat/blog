@@ -21,6 +21,7 @@ CORS，全称 Cross-origin sharing.
 出于安全考虑，浏览器会限制脚本中发起的跨域请求。比如，使用 XMLHttpRequest 发起 HTTP 请求就必须遵守同源策略。
 
 跨源资源共享 ( CORS )机制让 Web 应用服务器能支持跨站访问控制，从而使得安全地进行跨站数据传输成为可能。
+<!-- more -->
 
 ## 谈谈 Cookies
 
