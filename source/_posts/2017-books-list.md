@@ -19,6 +19,7 @@ description:
 - 《围城》 钱钟书
 
 ### 码字类
+- 《图解 HTTP》
 - 《你不知道的JavaScript（中卷）》
 
 ### 论说类
