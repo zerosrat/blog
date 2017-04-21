@@ -5,7 +5,14 @@ node_js:
 env:
   global:
     - GH_REF: github.com/zerosrat/blog-g-test.git
-    - secure: "tWksTrznicyL7g+HHOGQTlfzQ/3Pt+rXEjoSwMrmBrxCHeSByKSLvhq5nly4ywMdQ5I84oFkik/aNI7Z8op7xr2tmJM5yf6J0jMCtEP7GtUu7BecD8DlVuguE29IOC+NzjMdB2yylXLk8l7eeR54txrfhLZcIMU20Q+c0u46L8GQzgHeRwQXWITbGovY9+PifdAygZyyyh71xLhIimXWSec+YZHR70T5BwYHohg21V+lt3qaOz4a/BFN0we1/JutLcOx+OltUUPUtTn6zIybIaMcRZQUoI+JxvJlXzrVDMe28BED8XgqHW+nGPRPCoCXrZivnxzZp6OMhUGAlX0LhGGkH7+5MTFFlvijt3XriPtV/tVM00q6ETuV6e/FFuedRbEo3k3W7V8xSDbMUAkjUirAFTIal3oE4DYcOBkAMlqeJH5kwW7d6NQYhzz7QEQ33PGI1Tj4w8CNYHwA/o+lLIjVOaZQRyIvbIEg757hiZZ0yFU8aZNHQSki5JvL4V99ZpkqgIZQfl6YzKmzSRTawa+Nb5MhI+1aehTAT0EW9+VQt6/bZmJ269pltEYMz22kQ9gx38Gngf1RQiyfHwwFMCYqiDJnLN7h6iTy8OL8oRxUP2TZMmy499RLkdJPcxS26v1xVRxyVN8iQpPxuB5FZuYNqsQv/NfOt8n0mRYkx28="
+    # - secure: "tWksTrznicyL7g+HHOGQTlfzQ/3Pt+rXEjoSwMrmBrxCHeSByKSLvhq5nly4ywMdQ5I84oFkik/aNI7Z8op7xr2tmJM5yf6J0jMCtEP7GtUu7BecD8DlVuguE29IOC+NzjMdB2yylXLk8l7eeR54txrfhLZcIMU20Q+c0u46L8GQzgHeRwQXWITbGovY9+PifdAygZyyyh71xLhIimXWSec+YZHR70T5BwYHohg21V+lt3qaOz4a/BFN0we1/JutLcOx+OltUUPUtTn6zIybIaMcRZQUoI+JxvJlXzrVDMe28BED8XgqHW+nGPRPCoCXrZivnxzZp6OMhUGAlX0LhGGkH7+5MTFFlvijt3XriPtV/tVM00q6ETuV6e/FFuedRbEo3k3W7V8xSDbMUAkjUirAFTIal3oE4DYcOBkAMlqeJH5kwW7d6NQYhzz7QEQ33PGI1Tj4w8CNYHwA/o+lLIjVOaZQRyIvbIEg757hiZZ0yFU8aZNHQSki5JvL4V99ZpkqgIZQfl6YzKmzSRTawa+Nb5MhI+1aehTAT0EW9+VQt6/bZmJ269pltEYMz22kQ9gx38Gngf1RQiyfHwwFMCYqiDJnLN7h6iTy8OL8oRxUP2TZMmy499RLkdJPcxS26v1xVRxyVN8iQpPxuB5FZuYNqsQv/NfOt8n0mRYkx28="
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GH_TOKEN # Set in travis-ci.org dashboard
+  on:
+    branch: master
 
 branches:
   only:
@@ -17,15 +24,6 @@ before_install:
 install:
   - npm i
 
-## Update composer and run the appropriate composer command
-before_script:
-  - composer self-update -q
-  - if [ -n "$GH_TOKEN" ]; then composer config github-oauth.github.com ${GH_TOKEN}; fi;
-  - if [ -z "$dependencies" ]; then composer install; fi;
-  - if [ "$dependencies" = "lowest" ]; then composer update --prefer-lowest -n; fi;
-  - if [ "$dependencies" = "highest" ]; then composer update -n; fi;
-  - composer show -i
-  
 script:
   - hexo g
 
