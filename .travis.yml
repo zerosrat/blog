@@ -21,7 +21,7 @@ script:
   - hexo g
 
 after_script:
-  - cd dist
+  - cd public
   - git init
   - git config user.name "zero_ai"
   - git config user.email "zero.yu@hotmail.com"
