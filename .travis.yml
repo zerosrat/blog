@@ -9,13 +9,13 @@ env:
 
 branches:
   only:
-  - source                # 只监测 master 分支上的 commit
+  - master
 
 before_install:
-  - npm i -g hexo-cli # 安装 hexo
+  - npm i -g hexo-cli
 
 install:
-  - npm i             # 安装额外的插件
+  - npm i
 
 script:
   - hexo g
