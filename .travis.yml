@@ -1,0 +1,31 @@
+language: node_js
+node_js:
+  - "7"
+
+env:
+  global:
+    - GH_REF: github.com/zerosrat/blog-g-test.git
+    - secure: "tWksTrznicyL7g+HHOGQTlfzQ/3Pt+rXEjoSwMrmBrxCHeSByKSLvhq5nly4ywMdQ5I84oFkik/aNI7Z8op7xr2tmJM5yf6J0jMCtEP7GtUu7BecD8DlVuguE29IOC+NzjMdB2yylXLk8l7eeR54txrfhLZcIMU20Q+c0u46L8GQzgHeRwQXWITbGovY9+PifdAygZyyyh71xLhIimXWSec+YZHR70T5BwYHohg21V+lt3qaOz4a/BFN0we1/JutLcOx+OltUUPUtTn6zIybIaMcRZQUoI+JxvJlXzrVDMe28BED8XgqHW+nGPRPCoCXrZivnxzZp6OMhUGAlX0LhGGkH7+5MTFFlvijt3XriPtV/tVM00q6ETuV6e/FFuedRbEo3k3W7V8xSDbMUAkjUirAFTIal3oE4DYcOBkAMlqeJH5kwW7d6NQYhzz7QEQ33PGI1Tj4w8CNYHwA/o+lLIjVOaZQRyIvbIEg757hiZZ0yFU8aZNHQSki5JvL4V99ZpkqgIZQfl6YzKmzSRTawa+Nb5MhI+1aehTAT0EW9+VQt6/bZmJ269pltEYMz22kQ9gx38Gngf1RQiyfHwwFMCYqiDJnLN7h6iTy8OL8oRxUP2TZMmy499RLkdJPcxS26v1xVRxyVN8iQpPxuB5FZuYNqsQv/NfOt8n0mRYkx28="
+
+branches:
+  only:
+  - source                # 只监测 master 分支上的 commit
+
+before_install:
+  - npm i -g hexo-cli # 安装 hexo
+
+install:
+  - npm i             # 安装额外的插件
+
+script:
+  - hexo g
+
+after_script:
+  - cd dist
+  - git init
+  - git config user.name "zero_ai"
+  - git config user.email "zero.yu@hotmail.com"
+  - git add .
+  - git commit -m "Update docs via travis"
+  - git push -f "https://${GH_TOKEN}@${GH_REF}" master:gh-pages
+# E: Build LifeCycle
