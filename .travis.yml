@@ -5,7 +5,7 @@ cache:
   - node_modules
 env:
   global:
-  - GH_REF: github.com/zerosrat/blog.git
+  - GH_REF: github.com/zerosrat/zerosrat.github.io.git
   - secure: o4fXHnXT6iKLb/5dvcpkajNoDKZs+i24lWejIOtCCfqbO5wLf2zYsJ9QD958lEsAaDTjtPYRe9kWwK1YidYlMVmVbP+dFZbxriWNo7ANWSj8NW7nCKkgl5ZSVz6Ho2+kf1r8TtKGXENDwwsJqAWkw44URLK3Fse0G6+JbHyYc+MRgijiLvSvom79DFX6BMsqrq+01r6TifqtrV68Kq+6cZ49sb2qQKSKqNA0roGpeEmczTbzAhsPbR0x55xrGkXNqzv/cV4p0g9vHlrrlmWzmGM6kgnmfvOqGp/2y+vDy0gZLpW0wuxl4KTUes8hujZWzpAKB40a23dPVxFFkxCOizEujWnWPBQzNWhTnFkRIe2nEl58TbOg17LpjbLCH4iBf9NPmPQ4EsDYmxWVS+j1VJBUW3WpU4uscw2ukSHdfFI1BBUb7gYB8002vnd9VgP08waks6sabQ5TvjyNywBTuubEQICA+vsBCmE8tQrqJ2LKH4Uk273Pi/O2Oz0m0p+Pc/RmK5ds4hM2AHpREA9tqKyBarTaFiIqB5MVwZo8ynRuZzIxq8a3p6VIBTXyZVceq8XfPe2GwzPCB2kyNMfIw0SgmWc0v8ChffFrDwDZOw+ySYGL1NEyduIqFzUpSi+b6y1R62Um10VjNUrn5XLMWWjH5o45X5OcQTk105TBnRc=
 branches:
   only:
@@ -23,4 +23,4 @@ after_script:
 - git config user.email "zero.yu@hotmail.com"
 - git add --all
 - git commit -m "Update blog via travis"
-- git push --force "https://${GH_TOKEN}@${GH_REF}" master:gh-pages
+- git push -f -q "https://${GH_TOKEN}@${GH_REF}" master:master
