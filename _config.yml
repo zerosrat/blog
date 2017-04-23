@@ -5,14 +5,14 @@
 # Site
 title: Blog of Zero Yu
 subtitle: Stay Young, Stay Simple.
-description: Let's make magic.
+description: Cross the Great Wall, we can reach every corner in the world. 
 author: Zero Yu
 language: zh-Hans
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://zerosrat.github.io/
+url: http://zerosrat.com
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
