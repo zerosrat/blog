@@ -2,7 +2,7 @@ title: Hello Hexo
 date: 2015-10-30 0:02:11
 description: 开启Hexo之旅
 categories: Front End
-tag: Blog
+tag: Hexo
 ---
 ## 前言
 
