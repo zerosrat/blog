@@ -30,8 +30,12 @@ HTTP Cookie（也叫Web cookie或者浏览器Cookie）是服务器发送到用�
 创建Cookie：当服务器收到HTTP请求时，可以在响应头里面增加一个Set-Cookie头部。浏览器收到响应之后会去除Cookie信息并保存，之后对该服务器每一次请求中都通过Cookie请求头部将Cookie信息发送给服务器。
 
 ## 场景
-// 本场景发生于chrome环境下
-最近在做一个小项目，登录之后，发现虽然登录的 http 请求返回了 Set-Cookie 头并且包含键值对，但是浏览器中却没 cookie 值，这让我很困惑。排除了其他原因后，注意到在开发环境中，因为前后台项目被部署在不同的端口下，所以后台配置了 CORS 实现跨域，cookie 没有成功设置可能是跨域带来的。之后，将前台项目和后台项目部署在同一域下，发现 cookie 成功设置了，这样一来，更加明确了问题的所在。
+
+最近在做一个小项目，项目中是用 cookies(Client) + session(Server) 的机制来保存登录状态，如下图。
+
+![](http://7xoxnz.com1.z0.glb.clouddn.com/cookies-session.png)
+
+问题描述：登录之后，发现虽然登录的 http 请求返回了 Set-Cookie 头并且包含键值对，但是浏览器中却没 cookie 值，这让我很困惑。排除了其他原因后，注意到在开发环境中，因为前后台项目被部署在不同的端口下，所以后台配置了 CORS 实现跨域，cookie 没有成功设置可能是跨域带来的。之后，将前台项目和后台项目部署在同一域下，发现 cookie 成功设置了，这样一来，更加明确了问题的所在。
 
 ## 问题解决
 
@@ -40,7 +44,7 @@ CORS 请求默认是不会发送 Cookie 和认证信息的。要发送和保存 
 前端的话，需要将 `withCredentitals` 属性设置为 true.
 ``` js
 var xhr = new XMLHttpRequest();
-xhr.withCredentials = true; 
+xhr.withCredentials = true;
 ```
 
 后端也要进行配置，`Access-Control-Allow-Credentials: true`，并且如果浏览器要发送 cookie 的话，`Access-Control-Allow-Origin` 就不能设为星号，其值必须指定明确的、与请求网页一致的域名。
