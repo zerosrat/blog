@@ -1,5 +1,5 @@
 ---
-title: Vue.js 中的父子组件通信
+title: Vue.js 中的简单父子组件通信
 date: 2017-03-16 15:16:46
 tags: Vue.js
 ---
@@ -17,7 +17,7 @@ tags: Vue.js
 
 ## 错误示范
 
-```vue
+``` html
 <!-- Parent.vue -->
 <template>
   <div>
@@ -42,7 +42,7 @@ export default {
 </script>
 ```
 
-``` vue
+``` html
 <!-- child.vue -->
 <template>
   <div>
@@ -69,7 +69,7 @@ export default {
 
 这个实例包含了 props down 和 events up。初始化时，父组件指定 input 的 text prop 专递给子组件；text 值输入时被修改后，子组件再回传 computed 的 _text 值给父组件更新 text 值。
 
-``` vue
+``` html
 <!-- Parent.vue -->
 <template>
   <div>
@@ -99,7 +99,7 @@ export default {
 </script>
 ```
 
-``` vue
+``` html
 <!-- child.vue -->
 <template>
   <input type="text" v-model="_text" @input="$emit('changeText',$event.target.value)">
@@ -125,7 +125,7 @@ export default {
 
 如果子组件中有两个 input ，并且 input 值需要绑定。这时候，父组件用两个 v-model 属性肯定是行不通的。把 v-model 语法糖拆解开来，这个问题就得到解决了。
 
-``` vue
+``` html
 <!-- Parent.vue -->
 <template>
   <div>
@@ -161,7 +161,7 @@ export default {
 </script>
 ```
 
-``` vue
+``` html
 <!-- child.vue -->
 <template>
   <div>
@@ -187,3 +187,6 @@ export default {
 }
 </script>
 ```
+
+## 更复杂的情况
+大型应用或是更复杂的情况，要考虑使用 Vuex 来做专门的状态管理

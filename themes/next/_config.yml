@@ -97,7 +97,7 @@ font:
   enable: true
 
   # Uri of fonts host. E.g. //fonts.googleapis.com (Default)
-  host: http://fonts.gmirror.org
+  # host: http://fonts.gmirror.org
 
   # Global font settings used on <body> element.
   global:
@@ -308,14 +308,14 @@ google_analytics: UA-77951400-1
 baidu_analytics: a5c9002fdce3fad3f14ba17eae778ce8
 
 # Duoshuo ShortName
-duoshuo_shortname: zerosrat
+# duoshuo_shortname: zerosrat
 
 # Disqus
 disqus:
-  enable: false
-  shortname:
+  enable: true
+  shortname: zerosrat
   count: true
-#disqus_shortname: zerosrat
+disqus_shortname: zerosrat
 
 # Hypercomments
 #hypercomments_id:
