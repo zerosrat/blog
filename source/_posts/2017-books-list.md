@@ -1,6 +1,6 @@
 ---
 title: 2017 书单
-date: 2017-01-02 18:58:22
+date: 2017-12-31 18:58:22
 tags: Read
 categories: Reading
 description:
@@ -18,6 +18,7 @@ description:
 - 《深入理解ES6》
 - 《你不知道的JavaScript（中卷）》
 - 《精通 CSS》（重读）
+- 《JavaScript高级程序设计》（重读）
 
 ### 小说类
 - 《嫌疑人x的献身》 东野圭吾
@@ -28,7 +29,8 @@ description:
 
 ## 在读
 ### 码字类
-- 《JavaScript高级程序设计》（重读）
+- 《Head First HTML5 Programming》
+- 《CSS揭秘》
 
 ### 论说类
 #### 社科类
@@ -44,11 +46,9 @@ description:
 
 ## 想看
 ### 码字类
-- 《CSS揭秘》
 - 《JavaScript设计模式》
 - 《大话设计模式》
 - 《JavaScript高性能编程》
-- 《Head First HTML5 Programming》
 - 《深入浅出 Node.js》
 
 ### 论说类
