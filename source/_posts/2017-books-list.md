@@ -19,6 +19,7 @@ description:
 - 《你不知道的JavaScript（中卷）》
 - 《精通 CSS》（重读）
 - 《JavaScript高级程序设计》（重读）
+- 《Head First HTML5 Programming》
 
 ### 小说类
 - 《嫌疑人x的献身》 东野圭吾
@@ -29,7 +30,6 @@ description:
 
 ## 在读
 ### 码字类
-- 《Head First HTML5 Programming》
 - 《CSS揭秘》
 
 ### 论说类
