@@ -30,6 +30,7 @@ description:
 
 ## 在读
 ### 码字类
+- 《大话设计模式》
 - 《CSS揭秘》
 
 ### 论说类
@@ -47,9 +48,9 @@ description:
 ## 想看
 ### 码字类
 - 《JavaScript设计模式》
-- 《大话设计模式》
 - 《JavaScript高性能编程》
 - 《深入浅出 Node.js》
+- 《深入React技术栈》
 
 ### 论说类
 #### 社科类
