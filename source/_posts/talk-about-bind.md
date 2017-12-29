@@ -1,5 +1,5 @@
 ---
-title: 谈谈 Function.prototype.bind() 的 polyfill（上）
+title: 谈谈 Function.prototype.bind() 的 polyfill
 date: 2017-12-01 11:01:38
 tags: JavaScript
 ---
@@ -98,7 +98,7 @@ Function.prototype.bind = Function.prototype.bind || function(context) {
   var args = Array.prototype.slice.call(arguments, 1)
 
   return function() {
-    var newArgs = aArray.prototype.slice.call(arguments)
+    var newArgs = Array.prototype.slice.call(arguments)
     target.apply(context, newArgs.concat(args))
   }
 }
@@ -115,7 +115,7 @@ Function.prototype.bind = Function.prototype.bind || function(context) {
   var args = Array.prototype.slice.call(arguments, 1)
 
   return function() {
-    var newArgs = aArray.prototype.slice.call(arguments)
+    var newArgs = Array.prototype.slice.call(arguments)
     target.apply(context, newArgs.concat(args))
   }
 }
@@ -142,7 +142,7 @@ Function.prototype.bind = Function.prototype.bind || function(context) {
   // fnBound.prototype = Object.create(target.prototype)
 
   return function fnBound() {
-    var newArgs = aArray.prototype.slice.call(arguments)
+    var newArgs = Array.prototype.slice.call(arguments)
     var finalArgs = newArgs.concat(args)
     if (this instanceof fn) {
       target.apply(this, finalArgs)
@@ -156,7 +156,7 @@ Function.prototype.bind = Function.prototype.bind || function(context) {
 到了这里，代码其实和 MDN 里的 polyfill 差不多了，代码见[链接](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/bind#Compatibility)
 
 ## 已经完美？
-当我们认为这份代码已经完美时，这时应该看看 [es5-shim 对 bind 的实现](https://github.com/es-shims/es5-shim/blob/master/es5-shim.js#L201)。下部分再来讲遗漏的点吧！
+当我们认为这份代码已经完美时，这时应该看看 [es5-shim 对 bind 的实现](https://github.com/es-shims/es5-shim/blob/master/es5-shim.js#L201)。搭配这篇博客（[《从一道面试题的进阶，到“我可能看了假源码”（2）》](https://exp-team.github.io/blog/2017/02/20/js/es5-shim-bind/)）一起看效果更佳哦~
 
 ---
 
