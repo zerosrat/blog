@@ -6,7 +6,7 @@ categories: Reading
 ---
 
 ## @books class Life {}
-唯书籍、电影、游戏不可辜负。
+唯书籍、电影、梦想不可辜负。
 <!-- more -->
 
 ***
@@ -16,6 +16,7 @@ categories: Reading
 
 ## 在读
 ### 码字类
+- 《计算机科学概论》
 - 《深入 React 技术栈》
 - 《CSS揭秘》
 
@@ -44,3 +45,6 @@ categories: Reading
 
 ### 财经类
 - 《富爸爸，穷爸爸》
+
+### 元认知类
+- 《学习之道》 芭芭拉·奥克利
