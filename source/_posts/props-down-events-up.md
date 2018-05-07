@@ -12,7 +12,8 @@ tags: Vue.js
 
 在 Vue.js 中，组件实例的作用域是孤立的，所以说在父组件中不能直接引用子组件的，反之亦然。Vue.js 提供了专门的传递数据方式，父组件通过 props 向下传递数据给子组件，子组件通过 events 给父组件发送消息。如图
 
-![](http://7xoxnz.com1.z0.glb.clouddn.com/props-events.png)
+<!-- ![](http://7xoxnz.com1.z0.glb.clouddn.com/props-events.png) -->
+![](/images/props-events.png)
 <!-- more -->
 
 ## 错误示范
