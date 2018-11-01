@@ -22,7 +22,7 @@ tags: [Hexo, Travis]
 
 ## 原理
 
-![workflow](http://7xoxnz.com1.z0.glb.clouddn.com/gh-tavis-wf.jpeg)
+![workflow](/images/gh-tavis-wf.jpeg)
 
 ## 具体流程
 

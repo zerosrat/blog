@@ -33,7 +33,7 @@ HTTP Cookie（也叫Web cookie或者浏览器Cookie）是服务器发送到用�
 
 最近在做一个小项目，项目中是用 cookies(Client) + session(Server) 的机制来保存登录状态，如下图。
 
-![](http://7xoxnz.com1.z0.glb.clouddn.com/cookies-session.png)
+![](/images/cookies-session.png)
 
 问题描述：登录之后，发现虽然登录的 http 请求返回了 Set-Cookie 头并且包含键值对，但是浏览器中却没 cookie 值，这让我很困惑。排除了其他原因后，注意到在开发环境中，因为前后台项目被部署在不同的端口下，所以后台配置了 CORS 实现跨域，cookie 没有成功设置可能是跨域带来的。之后，将前台项目和后台项目部署在同一域下，发现 cookie 成功设置了，这样一来，更加明确了问题的所在。
 
