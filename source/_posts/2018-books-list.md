@@ -19,11 +19,11 @@ categories: Reading
 - 《编码》
 - 《学习之道》 芭芭拉·奥克利
 - 《编写可维护的JavaScript》
+- 《深入浅出 Node.js》
 
 ## 在读
 ### 码字类
 - 《深入 React 技术栈》
-- 《深入浅出 Node.js》
 - 《现代前端技术解析》
 
 ### 论说类
